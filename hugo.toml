@@ -1,0 +1,22 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'PromptLang Specification'
+
+# Author
+[author]
+  name = "Johan Carlsson"
+
+# Theme
+# Note: You will need to install this theme for Hugo to work.
+# git submodule add https://github.com/alex-shpak/hugo-book themes/book
+theme = 'book'
+
+# Tell Hugo where our content is
+contentDir = 'docs'
+
+# Book theme specific configuration
+[params]
+  # (Optional, theme-specific) Set the path to the book menu file
+  BookMenu = 'menu.md'
+  # (Optional, theme-specific) Display a "Last Updated" date
+  BookLastModified = true

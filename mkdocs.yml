@@ -1,0 +1,42 @@
+site_name: PromptLang Specification
+site_author: Johan Carlsson
+
+theme:
+  name: material
+
+nav:
+  - 'Home': 'index.md'
+  - 'Core Principles':
+    - '1. Declarative First': 'declarative_first.md'
+    - '2. Strict I/O': 'strict_io.md'
+    - '3. Composition & Modules': 'composition_modules.md'
+    - '4. Profiles & Execution Parameters': 'profiles_execution_parameters.md'
+    - '5. Policy Layer': 'policy_layer.md'
+    - '6. Testability & Verification': 'testability_verification.md'
+    - '7. Versioning & Semver': 'versioning_semver.md'
+    - '8. Clear Block Structure': 'clear_block_structure.md'
+    - '9. Variables & Templating': 'variables_templating.md'
+    - '10. Import & Inheritance': 'import_inheritance.md'
+    - '11. Safe Tool Usage': 'safe_tool_usage.md'
+    - '12. Pipelines & Steps': 'pipelines_steps.md'
+    - '13. Assertions & Validation': 'assertions_validation.md'
+    - '14. Observability & Telemetry': 'observability_telemetry.md'
+    - '15. Security & Privacy Scopes': 'security_privacy_scopes.md'
+    - '16. Fallback & Degradation': 'fallback_degradation.md'
+    - '17. Self-Check & Auto-Critique': 'self_check_auto_critique.md'
+    - '18. Human-Readability': 'human_readability.md'
+    - '19. Governance & Roles': 'governance_roles.md'
+    - '20. CI/CD-Friendly': 'ci_cd_friendly.md'
+    - '21. Documentation Requirements': 'documentation_requirements.md'
+    - '22. Internationalization & Style': 'internationalization_style.md'
+    - '23. Reproducibility & Determinism': 'reproducibility_determinism.md'
+    - '24. Secure Distribution & License': 'secure_distribution_license.md'
+  - 'Advanced Principles (v2.0)':
+    - '25. Caching': 'caching.md'
+    - '26. Batch Processing': 'batch_processing.md'
+    - '27. Streaming': 'streaming.md'
+    - '28. Human-in-the-Loop': 'human_in_the_loop.md'
+    - '29. Interactive Debugging': 'interactive_debugging.md'
+
+# This tells MkDocs to look for the documentation in the /docs directory.
+docs_dir: 'docs'

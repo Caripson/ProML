@@ -1,0 +1,52 @@
+# META
+# id: "com.example.sentiment"
+# version: "1.0.0"
+
+GOAL: Classify the sentiment of a user's comment.
+
+INPUTS:
+  comment: string
+
+OUTPUT_SCHEMA:
+  """
+  {
+    "type": "object",
+    "properties": {
+      "sentiment": { "enum": ["positive", "negative", "neutral"] }
+    },
+    "required": ["sentiment"]
+  }
+  """
+
+TEST:
+  - name: "Handles obviously positive comment"
+    input: { "comment": "I love this product, it's amazing!" }
+    mock_output: { "sentiment": "positive" }
+    assert:
+      - type: "equals"
+        path: "$.sentiment"
+        value: "positive"
+
+  - name: "Handles obviously negative comment"
+    input: { "comment": "I hate this, it's terrible and it broke." }
+    mock_output: { "sentiment": "negative" }
+    assert:
+      - type: "equals"
+        path: "$.sentiment"
+        value: "negative"
+
+  - name: "Handles a neutral comment"
+    input: { "comment": "The package arrived today." }
+    mock_output: { "sentiment": "neutral" }
+    assert:
+      - type: "equals"
+        path: "$.sentiment"
+        value: "neutral"
+
+  - name: "Failing test: Incorrect output"
+    input: { "comment": "This is the worst thing ever." }
+    mock_output: { "sentiment": "positive" }
+    assert:
+      - type: "equals"
+        path: "$.sentiment"
+        value: "negative"

@@ -1,0 +1,56 @@
+
+# META
+# id: "com.example.translator"
+# version: "1.0.0"
+
+GOAL: Translate a common phrase to a target language. This is a good candidate for caching as the same phrases are translated often.
+
+INPUTS:
+  phrase: string
+  language: string
+
+OUTPUT_SCHEMA:
+  """
+  {
+    "type": "object",
+    "properties": {
+      "translation": { "type": "string" }
+    }
+  }
+  """
+
+PROFILE:
+  default:
+    engine: "claude-3-haiku-20240307"
+    # Define the caching strategy for this prompt
+    CACHE:
+      strategy: "simple"
+      ttl: "1h"
+      scope: "shared"
+
+TEST:
+  - name: "Second call with same input should be cached"
+    # A test case can have steps to test stateful behavior like caching.
+    steps:
+      - name: "first_run"
+        # This would be a real model call in a real runner
+        mock_output: { "translation": "Bonjour" }
+        input: { "phrase": "Hello", "language": "French" }
+
+      - name: "second_run"
+        # The second run with the same input. A real runner would check the cache.
+        # The mock output should be identical.
+        mock_output: { "translation": "Bonjour" }
+        input: { "phrase": "Hello", "language": "French" }
+        # This is a new, hypothetical assertion to test caching behavior.
+        assert:
+          - type: "was_cached"
+            value: true
+
+      - name: "run_with_different_input"
+        # A third run with different input should NOT be cached.
+        mock_output: { "translation": "Hola" }
+        input: { "phrase": "Hello", "language": "Spanish" }
+        assert:
+          - type: "was_cached"
+            value: false
