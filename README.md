@@ -1,6 +1,6 @@
 # ProML (Prompt Markup Language)
 
-*Author: Johan Carlsson*
+*Author: Johan Caripson*
 
 ProML is a structured markup language for Large Language Model prompts. The project now ships a full toolchain: a formal specification, a production-ready parser and runtime, a CLI, a local registry, a constrained-decoding adapter layer, and developer ergonomics such as formatting, documentation, and editor support.
 
