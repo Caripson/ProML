@@ -1,52 +1,103 @@
-# META
-# id: "com.example.sentiment"
-# version: "1.0.0"
+META:
+  description: Classify a single comment into positive, negative, or neutral 
+    sentiment.
+  id: com.example.sentiment
+  owners:
+  - ml-team@example.com
+  profiles:
+    default:
+      cache:
+        scope: shared
+        strategy: simple
+        ttl: 15m
+      cost_budget: 0.02
+      max_output_tokens: 512
+      model: gpt-4.1-mini
+      provider: openai
+      temperature: 0.2
+  repro: strict
+  tags:
+  - classification
+  - sentiment
+  version: 1.0.0
 
-GOAL: Classify the sentiment of a user's comment.
+INPUT:
+  comment:
+    description: End-user comment to analyse.
+    required: true
+    type: string
 
-INPUTS:
-  comment: string
+OUTPUT:
+  grammar:
+  json_schema:
+    $id: schema:com.example.sentiment:output
+    schema:
+      additionalProperties: false
+      properties:
+        sentiment:
+          enum:
+          - positive
+          - negative
+          - neutral
+          type: string
+      required:
+      - sentiment
+      type: object
+    version: '2024-05-01'
+  regex:
 
-OUTPUT_SCHEMA:
-  """
-  {
-    "type": "object",
-    "properties": {
-      "sentiment": { "enum": ["positive", "negative", "neutral"] }
-    },
-    "required": ["sentiment"]
-  }
-  """
+POLICY:
+  {}
+
+PIPELINE:
+  steps:
+  - expects:
+      sentiment: string
+    id: classify_sentiment
+    inputs:
+      comment: $input.comment
+    outputs:
+      sentiment: string
+    uses: module.com.sentiment@^1.0.0
 
 TEST:
-  - name: "Handles obviously positive comment"
-    input: { "comment": "I love this product, it's amazing!" }
-    mock_output: { "sentiment": "positive" }
+  - name: Handles obviously positive comment
+    input:
+      comment: I love this product, it's amazing!
+    mock_output:
+      sentiment: positive
     assert:
-      - type: "equals"
-        path: "$.sentiment"
-        value: "positive"
-
-  - name: "Handles obviously negative comment"
-    input: { "comment": "I hate this, it's terrible and it broke." }
-    mock_output: { "sentiment": "negative" }
+    - type: schema
+    - type: equals
+      path: $.sentiment
+      value: positive
+  - name: Handles obviously negative comment
+    input:
+      comment: I hate this, it's terrible and it broke.
+    mock_output:
+      sentiment: negative
     assert:
-      - type: "equals"
-        path: "$.sentiment"
-        value: "negative"
-
-  - name: "Handles a neutral comment"
-    input: { "comment": "The package arrived today." }
-    mock_output: { "sentiment": "neutral" }
+    - type: schema
+    - type: equals
+      path: $.sentiment
+      value: negative
+  - name: Handles a neutral comment
+    input:
+      comment: The package arrived today.
+    mock_output:
+      sentiment: neutral
     assert:
-      - type: "equals"
-        path: "$.sentiment"
-        value: "neutral"
-
-  - name: "Failing test: Incorrect output"
-    input: { "comment": "This is the worst thing ever." }
-    mock_output: { "sentiment": "positive" }
+    - type: schema
+    - type: equals
+      path: $.sentiment
+      value: neutral
+  - name: 'Failing test: Incorrect output'
+    input:
+      comment: This is the worst thing ever.
+    mock_output:
+      sentiment: positive
     assert:
-      - type: "equals"
-        path: "$.sentiment"
-        value: "negative"
+    - type: schema
+    - type: equals
+      path: $.sentiment
+      value: negative

@@ -1,0 +1,34 @@
+{
+  "name": "proml-language",
+  "displayName": "ProML Language Support",
+  "description": "Syntax highlighting and snippets for Prompt Markup Language files.",
+  "version": "0.1.0",
+  "publisher": "proml",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Programming Languages"],
+  "contributes": {
+    "languages": [
+      {
+        "id": "proml",
+        "aliases": ["ProML", "proml"],
+        "extensions": [".proml"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "proml",
+        "scopeName": "source.proml",
+        "path": "./syntaxes/proml.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
+        "language": "proml",
+        "path": "./snippets/proml.json"
+      }
+    ]
+  }
+}

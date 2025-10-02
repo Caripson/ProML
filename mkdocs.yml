@@ -6,6 +6,9 @@ theme:
 
 nav:
   - 'Home': 'index.md'
+  - 'Minimal Spec': 'minimal_spec.md'
+  - 'CLI': 'cli.md'
+  - 'Registry': 'registry.md'
   - 'Core Principles':
     - '1. Declarative First': 'declarative_first.md'
     - '2. Strict I/O': 'strict_io.md'
@@ -37,6 +40,7 @@ nav:
     - '27. Streaming': 'streaming.md'
     - '28. Human-in-the-Loop': 'human_in_the_loop.md'
     - '29. Interactive Debugging': 'interactive_debugging.md'
+  - 'Constrained Decoding': 'constrained_decoding.md'
 
 # This tells MkDocs to look for the documentation in the /docs directory.
 docs_dir: 'docs'

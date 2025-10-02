@@ -1,0 +1,16 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "ProML",
+  "scopeName": "source.proml",
+  "patterns": [
+    {
+      "name": "entity.name.section.proml",
+      "match": "^(META|INPUT|OUTPUT|POLICY|PIPELINE|TEST):"
+    },
+    {
+      "include": "source.yaml"
+    }
+  ],
+  "repository": {},
+  "fileTypes": ["proml"]
+}

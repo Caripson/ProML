@@ -2,6 +2,10 @@
 
 Welcome to the official documentation for the ProML (Prompt Markup Language). This wiki provides a comprehensive guide to the principles and features of ProML, a language designed for creating powerful, reliable, and maintainable prompts.
 
+If you are looking for the precise document format, start with the [Minimal ProML Specification](./minimal_spec.md) that defines the required blocks and their semantics.
+
+For developer tooling, explore the [CLI reference](./cli.md), the local [registry workflow](./registry.md), and the VS Code extension skeleton under `tools/vscode/`.
+
 ## 🏛️ Core Principles
 
 1.  [Declarative First](./declarative_first.md): Describe the task, not the step-by-step reasoning.

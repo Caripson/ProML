@@ -1,0 +1,22 @@
+modules:
+  com.example.sentiment:
+  - metadata:
+      owners:
+      - ml-team@example.com
+      tags:
+      - classification
+      - sentiment
+    module_id: com.example.sentiment
+    path: test_prompts/sentiment_analysis.proml
+    repro: strict
+    sha256: bd59d31547963ebc16b375437bc8bfe05a1a1e04f41670fb6c41d7aa2db612cf
+    version: 1.0.0
+  com.example.translator:
+  - metadata:
+      owners: []
+      tags: []
+    module_id: com.example.translator
+    path: test_prompts/caching_example.proml
+    repro: loose
+    sha256: b340e15d9414b851be9c9a6c43e3925354c6a89bf4c918d6040d77c0e8b20f27
+    version: 1.0.0
