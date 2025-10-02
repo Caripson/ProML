@@ -16,15 +16,24 @@ ProML is a structured markup language for Large Language Model prompts. The proj
 
 ## 🚀 Quick Start
 
-Clone the repo and ensure dependencies are installed (Python 3.10+ recommended). The CLI runs directly via `python3 -m proml.cli`.
-
-Install locally in editable mode:
+The CLI is available on PyPI as [`proml-cli`](https://pypi.org/project/proml-cli/):
 
 ```bash
+python3 -m pip install proml-cli
+proml --help
+```
+
+### Local development
+
+Clone the repo if you plan to hack on the tooling:
+
+```bash
+git clone https://github.com/Caripson/ProML.git
+cd ProML
 python3 -m pip install -e .
 ```
 
-For full tooling (docs, tests, Guidance adapter) use the dev extras:
+For docs/tests/guidance adapters install the dev extras:
 
 ```bash
 python3 -m pip install -e .[dev]
@@ -39,7 +48,7 @@ python3 -m proml.cli lint test_prompts
 
 The formatter is schema-aware and preserves inline comments thanks to `ruamel.yaml`.
 
-### Run Tests
+### Run Tests (repo checkout)
 
 ```bash
 python3 proml_test.py test_prompts/sentiment_analysis.proml
@@ -92,7 +101,6 @@ The project is preconfigured for MkDocs out of the box. After installing `mkdocs
 
 Issues and PRs are welcome! Impactful directions include:
 
-- Package the CLI as a distributable (`pip install proml`).
 - Build richer adapters (Guidance grammar, OpenAI function-calling integration).
 - Expand formatter lint rules (comment style, schema normalization hints).
 - Publish example modules and tutorials demonstrating real-world prompt workflows.

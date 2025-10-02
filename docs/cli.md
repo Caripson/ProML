@@ -15,7 +15,16 @@ The `proml` command provides a lightweight developer experience for working with
 | `proml publish` | Add a prompt to the local registry (`proml_registry.yaml`). |
 | `proml import` | Resolve a prompt version from the registry. |
 
-Example:
+## Installation
+
+Install the published CLI from PyPI:
+
+```bash
+python3 -m pip install proml-cli
+proml --help
+```
+
+## Example
 
 ```bash
 python3 -m proml.cli lint test_prompts
