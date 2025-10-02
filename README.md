@@ -18,6 +18,18 @@ ProML is a structured markup language for Large Language Model prompts. The proj
 
 Clone the repo and ensure dependencies are installed (Python 3.10+ recommended). The CLI runs directly via `python3 -m proml.cli`.
 
+Install locally in editable mode:
+
+```bash
+python3 -m pip install -e .
+```
+
+For full tooling (docs, tests, Guidance adapter) use the dev extras:
+
+```bash
+python3 -m pip install -e .[dev]
+```
+
 ### Format & Lint
 
 ```bash

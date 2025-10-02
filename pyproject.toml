@@ -1,0 +1,37 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "proml"
+version = "0.1.0"
+description = "Prompt Markup Language toolkit for structured LLM workflows"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+  { name = "Johan Caripson" }
+]
+dependencies = [
+  "ruamel.yaml>=0.18",
+  "PyYAML>=6.0"
+]
+
+[project.optional-dependencies]
+dev = [
+  "mkdocs>=1.6",
+  "mkdocs-material>=9.5",
+  "pytest>=8.3",
+  "guidance>=0.1.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/Caripson/ProML"
+Documentation = "https://github.com/Caripson/ProML/tree/main/docs"
+Source = "https://github.com/Caripson/ProML"
+
+[project.scripts]
+proml = "proml.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["proml*"]

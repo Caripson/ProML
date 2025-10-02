@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.idea/
+.vscode/
+dist/
+build/
+*.egg-info/
+.eggs/
+.coverage
+htmlcov/
+.pytest_cache/
