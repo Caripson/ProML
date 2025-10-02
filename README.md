@@ -1,100 +1,88 @@
-# ProML (Prompt Markup Language) (A Proposal)
+# ProML (Prompt Markup Language)
 
 *Author: Johan Carlsson*
 
-This repository contains a proposal and an exploration into a structured language for interacting with Large Language Models (LLMs), tentatively named ProML.
+ProML is a structured markup language for Large Language Model prompts. The project now ships a full toolchain: a formal specification, a production-ready parser and runtime, a CLI, a local registry, a constrained-decoding adapter layer, and developer ergonomics such as formatting, documentation, and editor support.
 
-## 🏛️ Vision
+## ✨ Highlights
 
-The idea behind ProML is to explore how concepts from software engineering (like versioning, testing, and modularity) could be applied to the world of prompt engineering. The hope is that this could lead to AI-powered applications that are more reliable, testable, and maintainable.
+- **Formal spec & docs** — `docs/` contains the language guide, minimal grammar, and 29 governing principles for prompt engineering.
+- **Reference parser** — `proml/parser.py` builds an AST, validates block order, semver, repro tiers, policies, pipelines, and test definitions.
+- **Strict I/O test runner** — `proml_test.py` parses `.proml` files, enforces JSON Schema/regex/grammar constraints, and runs caching-aware assertions.
+- **Constraint engine** — pluggable validators for regex, JSON Schema, and CFG grammar; ships with a Guidance-compatible adapter for decoder-time enforcement.
+- **Engine profiles & caching** — structured metadata for model, temperature, token limits, and cost budgets with hash-based cache keys and adapter registry (OpenAI, Anthropic, Local, Ollama, Stub).
+- **CLI & registry** — `proml` command (init, lint, fmt, test, run, bench, publish, import) plus a YAML registry for semver-aware module discovery.
+- **Developer experience** — schema-aware formatter, VS Code extension skeleton, MkDocs plugin, and example prompts under `test_prompts/`.
 
-This repository contains two main components:
+## 🚀 Quick Start
 
-1.  **The Language Specification Wiki:** A complete guide to the principles and syntax of ProML.
-2.  **A Proof-of-Concept Test Runner:** A Python script that demonstrates how to parse and test `.proml` files.
+Clone the repo and ensure dependencies are installed (Python 3.10+ recommended). The CLI runs directly via `python3 -m proml.cli`.
 
----
+### Format & Lint
 
-## 📖 The Wiki
+```bash
+python3 -m proml.cli fmt test_prompts/sentiment_analysis.proml
+python3 -m proml.cli lint test_prompts
+```
 
-All documentation for the language specification can be found in the `/docs` directory.
+The formatter is schema-aware and preserves inline comments thanks to `ruamel.yaml`.
 
-**[➡️ Start browsing the Full Language Specification here](./docs/index.md)**
+### Run Tests
 
-The wiki details all 29 core principles of the language, from `Declarative First` and `Strict I/O` to advanced concepts like `Caching` and `Pipelines`.
+```bash
+python3 proml_test.py test_prompts/sentiment_analysis.proml
+python3 proml_test.py test_prompts/caching_example.proml
+```
 
----
+### Execute a Prompt
 
-## 🧪 Proof-of-Concept Test Runner
+```bash
+python3 -m proml.cli run test_prompts/sentiment_analysis.proml \
+  --input comment="I love this product" --provider stub
+```
 
-We have built a simple test runner, `proml_test.py`, to demonstrate the feasibility of the `Testability` principle (#6).
+Use `--provider stub` for offline evaluation; registered adapters handle OpenAI, Anthropic, Local backends, and more.
 
-### How to Run the Tests
+### Registry Workflow
 
-You can run the test runner against the example `.proml` files located in the `/test_prompts` directory.
+```bash
+python3 -m proml.cli publish test_prompts/sentiment_analysis.proml
+python3 -m proml.cli import com.example.sentiment --version ^1.0.0
+```
 
-1.  **Run the sentiment analysis test (demonstrates basic assertions):**
-    ```bash
-    python3 proml_test.py test_prompts/sentiment_analysis.proml
-    ```
-    *(This test is expected to have 1 failing test case by design.)*
+Published modules are tracked in `proml_registry.yaml` with integrity hashes and reproducibility metadata.
 
-2.  **Run the caching test (demonstrates stateful, multi-step tests):**
-    ```bash
-    python3 proml_test.py test_prompts/caching_example.proml
-    ```
+## 🧰 Developer Tooling
 
-This script is a proof-of-concept for parsing the ProML DSL, executing tests defined in a `TEST` block, and validating outputs against assertions.
+- **Formatting & comments:** schema-aware formatter retains inline annotations across blocks.
+- **Guidance adapter:** `proml.adapters.GuidanceGenerationAdapter` lets you enforce regex/grammar/schema constraints inside Guidance programs.
+- **MkDocs plugin:** `mkdocs_proml_plugin.py` renders `.proml` modules into documentation pages automatically.
+- **VS Code extension:** `tools/vscode/` provides syntax highlighting and snippets for `.proml` files.
 
----
+## 📚 Documentation
 
-## 🌐 Static Site Generation
+Browse the specification and principles in the [docs index](./docs/index.md). The minimal spec includes a formal EBNF grammar, block invariants, determinism tiers, policy semantics, pipelines, and testing requirements.
 
-This project is configured to be built into a full documentation website by two popular static site generators: **MkDocs** and **Hugo**.
+## 🔬 Tests
 
-### Option 1: Build with MkDocs
+The repository includes targeted tests for the parser, formatter, and adapters under `tests/`. Run them with:
 
-MkDocs is a fast and simple static site generator geared towards project documentation.
+```bash
+PYTHONPATH=. python3 tests/test_formatter.py
+PYTHONPATH=. python3 tests/test_guidance_adapter.py
+```
 
-1.  **Install dependencies:**
-    ```bash
-    pip install mkdocs mkdocs-material
-    ```
+## 🌐 Publishing Docs
 
-2.  **Run the local dev server:**
-    ```bash
-    mkdocs serve
-    ```
-    This will start a local server, typically at `http://127.0.0.1:8000`.
+The project is preconfigured for MkDocs out of the box. After installing `mkdocs` and `mkdocs-material`, run `mkdocs serve` to preview the docs site locally. A Hugo configuration is also included for alternative static site generation.
 
-### Option 2: Build with Hugo
+## 🙌 Contributing & Next Ideas
 
-Hugo is a powerful and extremely fast static site generator.
+Issues and PRs are welcome! Impactful directions include:
 
-1.  **Install Hugo:** Follow the official installation guide for your operating system (e.g., `brew install hugo` on macOS or `sudo apt install hugo` on Debian/Ubuntu).
+- Package the CLI as a distributable (`pip install proml`).
+- Build richer adapters (Guidance grammar, OpenAI function-calling integration).
+- Expand formatter lint rules (comment style, schema normalization hints).
+- Publish example modules and tutorials demonstrating real-world prompt workflows.
 
-2.  **Initialize a Git repository (if you haven't already):**
-    ```bash
-    git init
-    ```
-
-3.  **Install the theme:** The configuration points to the "book" theme, which you can install as a Git submodule:
-    ```bash
-    git submodule add https://github.com/alex-shpak/hugo-book themes/book
-    ```
-
-4.  **Run the local dev server:**
-    ```bash
-    hugo server
-    ```
-    This will start a local server, typically at `http://localhost:1313`.
-
----
-
-## 🚀 Next Steps
-
-This project is actively evolving. The next steps involve:
-
-*   Further refining the language specification.
-*   Expanding the capabilities of the test runner.
-*   Developing a static site generator to create a beautiful, searchable website from the wiki's Markdown files.
+Have fun building reproducible, testable LLM workflows with ProML.
