@@ -19,7 +19,7 @@ Policies are defined in a `POLICIES` block. They can be simple flags, or more co
 
 Imagine a prompt that summarizes medical articles for a general audience. It's crucial that it doesn't leak personal data and that it includes a medical disclaimer.
 
-**File: `/policies/standard_safety.prompt`**
+**File: `/policies/standard_safety.proml`**
 ```
 POLICIES:
   # This policy instructs the runtime to find and replace PII.
@@ -29,9 +29,9 @@ POLICIES:
   - forbidden_topics: ["hate_speech", "self_harm", "graphic_violence"]
 ```
 
-**File: `/prompts/medical_summary.prompt`**
+**File: `/prompts/medical_summary.proml`**
 ```
-@import "/policies/standard_safety.prompt"
+@import "/policies/standard_safety.proml"
 
 GOAL: Summarize the provided medical study for a non-technical audience.
 
@@ -55,14 +55,14 @@ POLICIES:
 
 ### How it Works
 
-1.  **Imported Policies:** The prompt first imports the `standard_safety.prompt` file. The PromptLang runtime now knows it must apply `pii_masking` and check for `forbidden_topics`.
+1.  **Imported Policies:** The prompt first imports the `standard_safety.proml` file. The ProML runtime now knows it must apply `pii_masking` and check for `forbidden_topics`.
 2.  **Local Policies:** The prompt then adds its own specific policies.
     *   `must_include`: The runtime will check the model's final output. If the disclaimer is missing, it will either reject the output or automatically append it.
     *   `require_citation`: This is a more complex policy. It might instruct the model to generate a citation, or it could be a post-processing step where another model call verifies that the summary's claims are supported by the source text.
 
 This layered approach allows for a powerful and flexible system:
 
-*   **Central Governance:** An organization can define a set of mandatory base policies (`standard_safety.prompt`) that all developers must use.
+*   **Central Governance:** An organization can define a set of mandatory base policies (`standard_safety.proml`) that all developers must use.
 *   **Local Customization:** Individual prompt authors can add specific, context-aware policies (`must_include`, `require_citation`) as needed.
 
 This makes building safe and ethical AI systems a systematic and enforceable part of the development process, rather than an afterthought.

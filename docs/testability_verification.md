@@ -1,6 +1,6 @@
 # 6. Testability & Verification
 
-**Core Principle:** Prompts must be testable. PromptLang provides a framework for defining unit tests and evaluation datasets (fixtures) directly within the prompt file, enabling automated testing and quality assurance.
+**Core Principle:** Prompts must be testable. ProML provides a framework for defining unit tests and evaluation datasets (fixtures) directly within the prompt file, enabling automated testing and quality assurance.
 
 This treats prompts as code, applying the same principles of continuous integration and regression testing that are standard in software engineering.
 
@@ -13,7 +13,7 @@ This treats prompts as code, applying the same principles of continuous integrat
 
 ## Practical Application & Examples
 
-PromptLang supports two main forms of testing defined in a `TEST` or `EVAL` block: **Unit Tests** and **Evaluation Sets (Fixtures)**.
+ProML supports two main forms of testing defined in a `TEST` or `EVAL` block: **Unit Tests** and **Evaluation Sets (Fixtures)**.
 
 ### Example: Unit Tests
 
@@ -70,7 +70,7 @@ A test runner can execute these tests and report which ones pass or fail.
 
 For more comprehensive testing, you can link to an external file containing a larger set of test cases. This is useful for regression testing on real-world data.
 
-**File: `/prompts/sentiment.prompt`**
+**File: `/prompts/sentiment.proml`**
 ```
 PROMPT:
 GOAL: Classify the sentiment of the user's comment.
@@ -100,4 +100,4 @@ EVAL:
 
 The `EVAL` block points to this dataset. A test runner would then execute the prompt for each entry in `customer_feedback.jsonl` and compare the actual output to the `expected` output, generating a report with accuracy metrics.
 
-By integrating testing directly into the prompt's definition, PromptLang makes it easy to build reliable, high-quality, and maintainable AI systems.
+By integrating testing directly into the prompt's definition, ProML makes it easy to build reliable, high-quality, and maintainable AI systems.

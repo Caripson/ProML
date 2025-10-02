@@ -1,6 +1,6 @@
 # 14. Observability & Telemetry
 
-**Core Principle:** Every prompt execution should be an observable event. The PromptLang runtime must automatically capture and structure key telemetry data, such as cost, latency, tool calls, and errors, making it easy to monitor, debug, and optimize prompt performance.
+**Core Principle:** Every prompt execution should be an observable event. The ProML runtime must automatically capture and structure key telemetry data, such as cost, latency, tool calls, and errors, making it easy to monitor, debug, and optimize prompt performance.
 
 This brings standard DevOps and MLOps practices to prompt engineering, treating prompt performance as a critical metric to be tracked.
 
@@ -13,7 +13,7 @@ This brings standard DevOps and MLOps practices to prompt engineering, treating 
 
 ## Practical Application & Examples
 
-Observability is not something you typically define in the prompt file itself. Rather, it's a feature of the **PromptLang runtime environment**. The runtime automatically wraps every prompt execution and emits a structured log event.
+Observability is not something you typically define in the prompt file itself. Rather, it's a feature of the **ProML runtime environment**. The runtime automatically wraps every prompt execution and emits a structured log event.
 
 ### Example: Standard Telemetry Event
 
@@ -84,4 +84,4 @@ Observability is the key to effective A/B testing. Imagine you want to see if a 
 
 Based on this data, you can make a confident, evidence-based decision on whether to roll out the new version to all users.
 
-By making every prompt run an observable event, PromptLang turns prompt engineering from a craft into a measurable and optimizable engineering discipline.
+By making every prompt run an observable event, ProML turns prompt engineering from a craft into a measurable and optimizable engineering discipline.

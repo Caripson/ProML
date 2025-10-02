@@ -1,6 +1,6 @@
 # 25. Caching
 
-**Core Principle:** Identical prompt executions should not be wastefully repeated. The PromptLang runtime should support caching, allowing it to store and instantly retrieve responses for previously seen requests, saving significant time and cost.
+**Core Principle:** Identical prompt executions should not be wastefully repeated. The ProML runtime should support caching, allowing it to store and instantly retrieve responses for previously seen requests, saving significant time and cost.
 
 This principle treats prompt execution like a pure function: for the same input, you should get the same output.
 
@@ -72,4 +72,4 @@ PROFILE:
 *   When a request for `user_id: "alice"` is cached, it is stored separately from a request for `user_id: "bob"`.
 *   This prevents Bob from accidentally seeing a cached summary of Alice's activity, ensuring data privacy while still providing performance benefits for individual users who might re-run the same prompt.
 
-By providing a declarative way to control caching, PromptLang allows developers to easily optimize their applications for performance and cost without writing complex caching logic in their application code.
+By providing a declarative way to control caching, ProML allows developers to easily optimize their applications for performance and cost without writing complex caching logic in their application code.

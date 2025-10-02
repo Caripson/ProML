@@ -1,6 +1,6 @@
 # 20. CI/CD-Friendly
 
-**Core Principle:** Prompts are a form of code and should be integrated into standard software development lifecycle processes. The PromptLang format and tooling are designed to be seamlessly integrated into Continuous Integration and Continuous Deployment (CI/CD) pipelines.
+**Core Principle:** Prompts are a form of code and should be integrated into standard software development lifecycle processes. The ProML format and tooling are designed to be seamlessly integrated into Continuous Integration and Continuous Deployment (CI/CD) pipelines.
 
 This allows for the automated testing, validation, and deployment of prompts, ensuring quality and reliability at scale.
 
@@ -13,15 +13,15 @@ This allows for the automated testing, validation, and deployment of prompts, en
 
 ## Practical Application & Examples
 
-A typical CI/CD pipeline for a PromptLang project would consist of several stages that run automatically whenever a change is made to a prompt file.
+A typical CI/CD pipeline for a ProML project would consist of several stages that run automatically whenever a change is made to a prompt file.
 
 ### Example CI/CD Pipeline Workflow
 
-Imagine a developer pushes a change to the `sentiment-analysis@1.4.0.prompt` file.
+Imagine a developer pushes a change to the `sentiment-analysis@1.4.0.proml` file.
 
 **1. Linting Stage:**
 
-The pipeline first runs a `promptlang-lint` command.
+The pipeline first runs a `proml-lint` command.
 *   **Action:** The linter statically analyzes the prompt file.
 *   **Checks:**
     *   Is the syntax valid?
@@ -32,7 +32,7 @@ The pipeline first runs a `promptlang-lint` command.
 
 **2. Testing Stage:**
 
-If linting passes, the pipeline runs the `promptlang-test` command.
+If linting passes, the pipeline runs the `proml-test` command.
 *   **Action:** The test runner executes all the [Unit Tests](./testability_verification.md) and [Evaluation Sets](./testability_verification.md) defined in the prompt's `TEST` and `EVAL` blocks.
 *   **Checks:**
     *   Does the prompt produce the correct output for given inputs?
@@ -45,7 +45,7 @@ If linting passes, the pipeline runs the `promptlang-test` command.
 Next, the pipeline can run checks related to governance and security.
 *   **Action:** A custom script or tool scans the prompt's `POLICIES` and `META` blocks.
 *   **Checks:**
-    *   Does the prompt import the mandatory company-wide `base-policies.prompt`?
+    *   Does the prompt import the mandatory company-wide `base-policies.proml`?
     *   If `risk_class` is `high`, has a user with the `@security-officer` role approved the change?
     *   Does the prompt use any deprecated or forbidden tools?
 *   **Outcome:** Failure stops the pipeline and may notify the security team.
@@ -53,8 +53,8 @@ Next, the pipeline can run checks related to governance and security.
 **4. Build & Package Stage:**
 
 If all checks pass, the prompt is ready to be "built".
-*   **Action:** The `promptlang-build` command compiles the prompt and its dependencies into a single, deployable artifact. It also generates a `promptlang.lock` file.
-*   **`promptlang.lock` (Lockfile):** This file freezes the exact versions of all dependencies:
+*   **Action:** The `proml-build` command compiles the prompt and its dependencies into a single, deployable artifact. It also generates a `proml.lock` file.
+*   **`proml.lock` (Lockfile):** This file freezes the exact versions of all dependencies:
     *   The specific version of the engine used (e.g., `gpt-4-turbo-2024-04-09`).
     *   The exact versions (`@1.2.0`) of any imported prompts, styles, or policies.
 *   **Outcome:** This process creates a versioned, self-contained prompt package (e.g., `sentiment-analysis-1.4.0.pkg`) and the `promptlang.lock` file.
@@ -66,4 +66,4 @@ Finally, the packaged prompt is deployed.
 *   **Zero-Downtime:** The application can now load and start using the new prompt version (`@1.4.0`) without any service interruption.
 *   **Rollback:** Because the packages are versioned, if the new prompt causes unforeseen issues in production, the system can be instantly rolled back to the previous version (`@1.3.0`).
 
-By making PromptLang inherently CI/CD-friendly, it elevates prompt engineering from a manual, ad-hoc activity to a mature, automated, and reliable engineering discipline.
+By making ProML inherently CI/CD-friendly, it elevates prompt engineering from a manual, ad-hoc activity to a mature, automated, and reliable engineering discipline.

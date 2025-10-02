@@ -1,6 +1,6 @@
 # 26. Batch Processing
 
-**Core Principle:** A prompt should be runnable on a large dataset of inputs in a single, efficient operation. PromptLang should provide a standard way to define batch execution, allowing the runtime to optimize calls to the underlying model.
+**Core Principle:** A prompt should be runnable on a large dataset of inputs in a single, efficient operation. ProML should provide a standard way to define batch execution, allowing the runtime to optimize calls to the underlying model.
 
 This is crucial for data processing, analysis, and evaluation tasks where a prompt needs to be applied to thousands or millions of items.
 
@@ -13,7 +13,7 @@ This is crucial for data processing, analysis, and evaluation tasks where a prom
 
 ## Practical Application & Examples
 
-Batch processing would not be a block within a prompt, but rather a mode of the **PromptLang execution engine**. The engine would take a prompt and a dataset as input.
+Batch processing would not be a block within a prompt, but rather a mode of the **ProML execution engine**. The engine would take a prompt and a dataset as input.
 
 ### Example: Running a Batch Job from the Command Line
 
@@ -50,7 +50,7 @@ A developer could then initiate the batch job with a command:
 
 ```bash
 # The command to run a prompt over a dataset
-promptlang-run --prompt /prompts/sentiment.prompt \
+proml-run --prompt /prompts/sentiment.proml \
                --dataset /data/reviews.csv \
                --output /results/sentiments.jsonl \
                --input-mapping '{"comment": "text"}' # Maps prompt input to dataset column
@@ -63,7 +63,7 @@ promptlang-run --prompt /prompts/sentiment.prompt \
 3.  **`--output`:** Specifies where to write the results.
 4.  **`--input-mapping`:** A crucial argument that tells the runner how to map columns from the dataset to the prompt's `INPUTS`. In this case, it maps the `text` column from `reviews.csv` to the `comment` input variable of the `sentiment.prompt`.
 
-**The `promptlang-run` engine would then:**
+**The `proml-run` engine would then:**
 
 a.  Read the dataset.
 b.  For each row, create an input object for the prompt (e.g., `{ "comment": "I love this product..." }`).
@@ -80,4 +80,4 @@ f.  Combine the original input data with the model's output and write it to the 
 ...
 ```
 
-By standardizing the concept of batch processing, PromptLang provides a powerful, scalable way to apply language models to large-scale data analysis tasks, moving beyond single, interactive executions.
+By standardizing the concept of batch processing, ProML provides a powerful, scalable way to apply language models to large-scale data analysis tasks, moving beyond single, interactive executions.

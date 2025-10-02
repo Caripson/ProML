@@ -1,6 +1,6 @@
 # 18. Human-Readability
 
-**Core Principle:** Prompts are code, and they should be as easy for humans to read and write as possible. PromptLang's syntax is designed to be clean, intuitive, and familiar, drawing inspiration from formats like YAML and Markdown.
+**Core Principle:** Prompts are code, and they should be as easy for humans to read and write as possible. ProML's syntax is designed to be clean, intuitive, and familiar, drawing inspiration from formats like YAML and Markdown.
 
 If a prompt is difficult for a human to understand, it will be difficult to maintain, debug, and improve.
 
@@ -13,7 +13,7 @@ If a prompt is difficult for a human to understand, it will be difficult to main
 
 ## Practical Application & Examples
 
-PromptLang achieves readability through several key features:
+ProML achieves readability through several key features:
 
 1.  **YAML-like Block Structure:** Using clear, indented blocks with simple key-value pairs.
 2.  **Markdown for Content:** Allowing for the use of Markdown in text-heavy blocks for formatting and clarity.
@@ -75,4 +75,4 @@ PROFILE:
 *   **Markdown in `CONTEXT`:** The `CONTEXT` block uses a multiline string (`"""`) and includes a Markdown-style list. This is much clearer than putting everything on one line.
 *   **Familiar Templating:** The `{{variable}}` syntax is widely used in many popular templating languages (Handlebars, Jinja, etc.), making it immediately familiar to many developers.
 
-By prioritizing human-readability, PromptLang ensures that prompts remain manageable and maintainable as they grow in complexity and number, fostering a more robust and collaborative development environment.
+By prioritizing human-readability, ProML ensures that prompts remain manageable and maintainable as they grow in complexity and number, fostering a more robust and collaborative development environment.

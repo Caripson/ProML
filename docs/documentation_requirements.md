@@ -13,7 +13,7 @@ This ensures that prompts are easy to understand, use, and maintain, even for de
 
 ## Practical Application & Examples
 
-PromptLang encourages embedding documentation directly into the prompt file using comments and dedicated metadata blocks. This keeps the documentation and the code in sync.
+ProML encourages embedding documentation directly into the prompt file using comments and dedicated metadata blocks. This keeps the documentation and the code in sync.
 
 ### Example: A Well-Documented Prompt
 
@@ -77,4 +77,4 @@ GOAL: Generate a concise, three-bullet-point summary of the provided text.
 *   **Prompt Registry UI:** A central web UI for all prompts could use this data to generate a beautiful, searchable documentation page for each prompt, complete with its description, tags, examples, and limitations.
 *   **Automated Linting:** A linter can enforce documentation requirements. For example, it could throw an error if a prompt with `status: "stable"` is missing the `description` or `known_limitations` fields, thus enforcing a documentation standard before prompts are published.
 
-By making documentation a required, first-class citizen, PromptLang ensures that the prompt library remains a valuable, understandable, and maintainable asset as it grows.
+By making documentation a required, first-class citizen, ProML ensures that the prompt library remains a valuable, understandable, and maintainable asset as it grows.

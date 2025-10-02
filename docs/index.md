@@ -1,6 +1,6 @@
-# PromptLang Language Specification
+# ProML (Prompt Markup Language)
 
-Welcome to the official documentation for the PromptLang Language Specification. This wiki provides a comprehensive guide to the principles and features of PromptLang, a language designed for creating powerful, reliable, and maintainable prompts.
+Welcome to the official documentation for the ProML (Prompt Markup Language). This wiki provides a comprehensive guide to the principles and features of ProML, a language designed for creating powerful, reliable, and maintainable prompts.
 
 ## 🏛️ Core Principles
 

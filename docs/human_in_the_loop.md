@@ -1,6 +1,6 @@
 # 28. Human-in-the-Loop
 
-**Core Principle:** Not all decisions should be fully automated. For critical or ambiguous tasks, a workflow should be able to pause and request explicit approval from a human before proceeding. PromptLang should provide a way to define these human approval steps within a pipeline.
+**Core Principle:** Not all decisions should be fully automated. For critical or ambiguous tasks, a workflow should be able to pause and request explicit approval from a human before proceeding. ProML should provide a way to define these human approval steps within a pipeline.
 
 This principle is essential for building safe, reliable, and practical AI-powered workflows in enterprise environments.
 
@@ -53,7 +53,7 @@ PIPELINE:
 **How it Works:**
 
 1.  **`draft_post`:** The pipeline starts by calling a prompt to generate the text for a social media post.
-2.  **`human_approval`:** The workflow pauses here. The PromptLang runtime or orchestration engine would now:
+2.  **`human_approval`:** The workflow pauses here. The ProML runtime or orchestration engine would now:
     a.  Identify the `assignee` (`@marketing-manager`).
     b.  Send a notification to that user (e.g., via Slack, email, or a custom dashboard).
     c.  The notification would contain the `ui_payload` data, rendered in a user-friendly interface with buttons for `approve`, `reject`, and `edit_and_approve`.

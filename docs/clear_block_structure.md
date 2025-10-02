@@ -2,7 +2,7 @@
 
 **Core Principle:** A prompt's components should be organized into a standardized, logical sequence of blocks. This makes prompts easier to read, write, and parse for both humans and machines.
 
-PromptLang enforces a consistent structure, which acts as a mental scaffold for the prompt author and a predictable format for tooling.
+ProML enforces a consistent structure, which acts as a mental scaffold for the prompt author and a predictable format for tooling.
 
 ## Why it Matters
 
@@ -13,7 +13,7 @@ PromptLang enforces a consistent structure, which acts as a mental scaffold for 
 
 ## The Standard Block Order
 
-PromptLang recommends the following order. While not all blocks are required for every prompt, they should appear in this sequence if present.
+ProML recommends the following order. While not all blocks are required for every prompt, they should appear in this sequence if present.
 
 1.  `META`: Versioning, ID, status, owner. (Not in the original list, but essential)
 2.  `GOAL`: The primary objective of the prompt.

@@ -13,13 +13,13 @@ Think of it like functions in a programming language. Instead of copying and pas
 
 ## Practical Application & Examples
 
-PromptLang uses an `@import` directive to include content from other files. You can import a whole file or specific named blocks.
+ProML uses an `@import` directive to include content from other files. You can import a whole file or specific named blocks.
 
 ### Example: Reusing a Style Guide
 
 Let's say you have a standard style for all your AI-generated customer emails.
 
-**File: `/styles/customer_email.prompt`**
+**File: `/styles/customer_email.proml`**
 ```
 STYLE:
 - Tone: Friendly, helpful, and slightly formal.
@@ -30,9 +30,9 @@ STYLE:
 
 Now, any prompt that needs to generate a customer email can simply import this style.
 
-**File: `/prompts/password_reset_email.prompt`**
+**File: `/prompts/password_reset_email.proml`**
 ```
-@import "/styles/customer_email.prompt"
+@import "/styles/customer_email.proml"
 
 GOAL: Write an email to a customer explaining how to reset their password.
 
@@ -48,9 +48,9 @@ OUTPUT:
 
 Composition also allows for overrides. Imagine you need a slightly more urgent tone for a fraud alert email, but still want to keep the rest of the standard email style.
 
-**File: `/prompts/fraud_alert_email.prompt`**
+**File: `/prompts/fraud_alert_email.proml`**
 ```
-@import "/styles/customer_email.prompt"
+@import "/styles/customer_email.proml"
 
 GOAL: Write an email to a customer alerting them to suspicious activity on their account.
 

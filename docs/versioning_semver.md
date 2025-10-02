@@ -77,4 +77,4 @@ A prompt execution engine or a CI/CD pipeline can use this metadata:
 3.  **Auditing and Logging:** When a prompt is executed, the runtime logs the full prompt ID and version (`com.mycompany.prompts.sentiment-analysis@1.3.0`). If a problem is discovered later, you know exactly which version of which prompt was responsible.
 4.  **Deprecation Warnings:** If a developer tries to use a prompt marked as `deprecated`, the system can issue a warning, pointing them to the newer version.
 
-By formalizing versioning, PromptLang enables the creation of robust, enterprise-scale systems built on top of language models.
+By formalizing versioning, ProML enables the creation of robust, enterprise-scale systems built on top of language models.

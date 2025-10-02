@@ -81,7 +81,7 @@ PROFILE:
 
 When executing this prompt, the user or system could specify which profile to use:
 
-*   `run_prompt("summarize.prompt", profile="default")` would use Claude 3 Sonnet.
+*   `run_prompt("summarize.proml", profile="default")` would use Claude 3 Sonnet.
 *   `run_prompt("summarize.prompt", profile="fast")` would use the cheaper and faster Haiku model.
 *   `run_prompt("summarize.prompt", profile="powerful")` would use GPT-4 for the highest quality summary, assuming the cost and latency are acceptable.
 

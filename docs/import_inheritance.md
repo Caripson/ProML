@@ -13,13 +13,13 @@ This is a more advanced form of [Composition & Modules](./composition_modules.md
 
 ## Practical Application & Examples
 
-PromptLang uses an `@import` statement. When one prompt imports another, its blocks are merged. By default, local blocks override imported blocks.
+ProML uses an `@import` statement. When one prompt imports another, its blocks are merged. By default, local blocks override imported blocks.
 
 ### Example: Inheriting and Overriding a Style
 
 Let's define a base style for a chatbot.
 
-**File: `/styles/base_chatbot.prompt`**
+**File: `/styles/base_chatbot.proml`**
 ```
 STYLE:
   - persona: "A helpful AI assistant."
@@ -30,9 +30,9 @@ STYLE:
 
 Now, we can create a new prompt for a more specialized chatbot that handles technical support. It will inherit the base style but override the `persona`.
 
-**File: `/prompts/tech_support_bot.prompt`**
+**File: `/prompts/tech_support_bot.proml`**
 ```
-@import "/styles/base_chatbot.prompt"
+@import "/styles/base_chatbot.proml"
 
 GOAL: Help users troubleshoot technical issues with our software.
 
@@ -52,7 +52,7 @@ OUTPUT:
 
 **Resulting Merged Style:**
 
-When the `tech_support_bot.prompt` is executed, the runtime engine effectively sees the following merged `STYLE` block:
+When the `tech_support_bot.proml` is executed, the runtime engine effectively sees the following merged `STYLE` block:
 
 ```
 STYLE:
@@ -67,7 +67,7 @@ STYLE:
 
 Inheritance is also powerful for managing policies. You can have a strict, company-wide policy file and then a slightly more relaxed version for internal tools.
 
-**File: `/policies/strict.prompt`**
+**File: `/policies/strict.proml`**
 ```
 POLICIES:
   - pii_masking: { level: "high" }
@@ -76,9 +76,9 @@ POLICIES:
 
 An internal summarization tool might be allowed to handle financial documents.
 
-**File: `/prompts/internal_quarterly_report_summarizer.prompt`**
+**File: `/prompts/internal_quarterly_report_summarizer.proml`**
 ```
-@import "/policies/strict.prompt"
+@import "/policies/strict.proml"
 
 GOAL: Summarize an internal financial report.
 

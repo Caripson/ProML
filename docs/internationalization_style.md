@@ -1,6 +1,6 @@
 # 22. Internationalization & Style
 
-**Core Principle:** Prompts should be adaptable to different languages, regions, and stylistic needs. PromptLang allows for the parameterization of locale-specific information and the use of reusable style modules to separate content logic from presentational rules.
+**Core Principle:** Prompts should be adaptable to different languages, regions, and stylistic needs. ProML allows for the parameterization of locale-specific information and the use of reusable style modules to separate content logic from presentational rules.
 
 This enables the creation of a single, core prompt that can be adapted for a global audience and various contexts without duplicating the main logic.
 
@@ -62,7 +62,7 @@ The core logic of the prompt remains the same; only the output language and date
 
 Just like functions, styles can be defined in separate files and imported. This is a powerful application of [Composition & Modules](./composition_modules.md).
 
-**File: `/styles/legal.prompt`**
+**File: `/styles/legal.proml`**
 ```
 # STYLE: For formal, legal communication.
 STYLE:
@@ -72,7 +72,7 @@ STYLE:
   - Formatting: "Reference specific clauses and definitions."
 ```
 
-**File: `/styles/friendly.prompt`**
+**File: `/styles/friendly.proml`**
 ```
 # STYLE: For casual, friendly customer interaction.
 STYLE:
@@ -85,7 +85,7 @@ Now, you can write a prompt that can adopt either style.
 
 ```
 PROMPT:
-@import "/styles/{{style_name}}.prompt"
+@import "/styles/{{style_name}}.proml"
 
 GOAL: Explain the consequence of a specific action.
 
@@ -107,7 +107,7 @@ OUTPUT:
 **How it Works:**
 
 1.  The `@import` statement itself contains a variable: `{{style_name}}`.
-2.  When the prompt is run with `style_name: "legal"`, it will import `/styles/legal.prompt`, and the model will adopt the persona of a lawyer.
-3.  When run with `style_name: "friendly"`, it will import `/styles/friendly.prompt` and produce a much more casual response.
+2.  When the prompt is run with `style_name: "legal"`, it will import `/styles/legal.proml`, and the model will adopt the persona of a lawyer.
+3.  When run with `style_name: "friendly"`, it will import `/styles/friendly.proml` and produce a much more casual response.
 
 This powerful combination of i18n parameters and modular styling allows a small number of core prompts to serve a wide variety of use cases and audiences, making the entire system more efficient and maintainable.

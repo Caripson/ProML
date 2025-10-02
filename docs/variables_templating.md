@@ -2,7 +2,7 @@
 
 **Core Principle:** Prompts must have a clear, standardized way to declare input variables, specify their types, and define default values. This makes prompts reusable and ensures that they receive the data they need in the correct format.
 
-PromptLang uses an `INPUTS` block for explicit variable declaration and a `{{variable_name}}` syntax for templating.
+ProML uses an `INPUTS` block for explicit variable declaration and a `{{variable_name}}` syntax for templating.
 
 ## Why it Matters
 
@@ -41,7 +41,7 @@ Before execution, a runtime would inject the actual values for `customer_name` a
 
 ### Example: Typed Variables, Defaults, and Required Flags
 
-PromptLang extends simple declarations with more powerful features.
+ProML extends simple declarations with more powerful features.
 
 ```
 PROMPT:

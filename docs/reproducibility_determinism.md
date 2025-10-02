@@ -2,7 +2,7 @@
 
 **Core Principle:** A prompt execution should be reproducible. By specifying an execution profile and a random seed, you should be able to get the exact same output for the same input, especially when using the same model version.
 
-This is fundamental for reliable testing, debugging, and auditing. While large language models have inherent randomness, PromptLang provides the mechanisms to control it.
+This is fundamental for reliable testing, debugging, and auditing. While large language models have inherent randomness, ProML provides the mechanisms to control it.
 
 ## Why it Matters
 
@@ -54,7 +54,7 @@ PROFILE:
 *   **During Testing:** A CI/CD pipeline would always run tests with a fixed seed. This ensures that a test failure is a real signal of a problem, not a random fluctuation.
     ```bash
     # In a CI/CD script
-    promptlang-test --profile="default" --seed=999
+    proml-test --profile="default" --seed=999
     ```
 *   **During Debugging:** When a production system logs an error, it should also log the `seed` and `engine` version that were used. A developer can then copy these values into their local environment to reproduce the problematic output exactly.
     ```json
@@ -70,4 +70,4 @@ PROFILE:
     ```
     A developer can now use `seed: 8675309` to debug the issue locally.
 
-By providing mechanisms to control determinism, PromptLang makes working with inherently stochastic models a more predictable and reliable engineering discipline.
+By providing mechanisms to control determinism, ProML makes working with inherently stochastic models a more predictable and reliable engineering discipline.

@@ -56,18 +56,18 @@ For more critical tasks, a formal, multi-step pipeline provides a more robust im
 PROMPT:
 PIPELINE:
   - name: "draft"
-    prompt: "/prompts/generate_legal_clause.prompt"
+    prompt: "/prompts/generate_legal_clause.proml"
     input: { context: "{{INPUT.context}}" }
 
   - name: "critique"
-    prompt: "/prompts/critique_legal_clause.prompt"
+    prompt: "/prompts/critique_legal_clause.proml"
     input: {
       clause: "{{STEPS.draft.output.clause}}",
       requirements: "The clause must be unambiguous, mention the governing law of California, and have a term of 3 years."
     }
 
   - name: "revise"
-    prompt: "/prompts/revise_legal_clause.prompt"
+    prompt: "/prompts/revise_legal_clause.proml"
     input: {
       original_clause: "{{STEPS.draft.output.clause}}",
       critique: "{{STEPS.critique.output.feedback}}"

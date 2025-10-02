@@ -13,7 +13,7 @@ By enforcing a strict output contract, you transform the language model from a c
 
 ## Practical Application & Examples
 
-JSON Schema is the standard for defining output structure in PromptLang, but other formats could be used.
+JSON Schema is the standard for defining output structure in ProML, but other formats could be used.
 
 ### Bad Example: Unstructured Output
 

@@ -81,4 +81,4 @@ PROFILE:
 
 This provides a clear and immediate feedback loop to the user, preventing runaway costs and managing expectations.
 
-By defining fallback and degradation paths, PromptLang allows you to build robust, production-ready applications that can handle the inherent unpredictability of working with large language models.
+By defining fallback and degradation paths, ProML allows you to build robust, production-ready applications that can handle the inherent unpredictability of working with large language models.

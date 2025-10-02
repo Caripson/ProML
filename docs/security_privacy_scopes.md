@@ -106,4 +106,4 @@ Here's how this works:
 
 This ensures that sensitive user data is never included in the model's context, logged, or stored in the final ticket, providing a strong layer of privacy protection.
 
-By using security and privacy scopes, PromptLang makes threat modeling and data protection an explicit and enforceable part of the prompt engineering lifecycle.
+By using security and privacy scopes, ProML makes threat modeling and data protection an explicit and enforceable part of the prompt engineering lifecycle.

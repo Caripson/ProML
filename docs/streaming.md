@@ -47,7 +47,7 @@ OUTPUT:
 
 **How it Works:**
 
-1.  The `STREAM: true` flag in the `PROFILE` instructs the PromptLang runtime to make a streaming request to the underlying language model API.
+1.  The `STREAM: true` flag in the `PROFILE` instructs the ProML runtime to make a streaming request to the underlying language model API.
 2.  Instead of waiting for the full response, the model provider's API will send back a sequence of small chunks (events).
 
     *   `chunk 1: {"delta": "Hello"}`
@@ -57,7 +57,7 @@ OUTPUT:
     *   `chunk 5: {"delta": " with that."}`
     *   `...`
 
-3.  The PromptLang runtime doesn't wait for the end. It immediately forwards these chunks to the client application (e.g., a web browser or a terminal).
+3.  The ProML runtime doesn't wait for the end. It immediately forwards these chunks to the client application (e.g., a web browser or a terminal).
 4.  The client application is responsible for appending these chunks together and displaying them to the user in real-time, creating the familiar typing effect.
 5.  Simultaneously, the runtime can be assembling the chunks internally. When the stream is finished, it can construct the final, complete JSON object (`{"response_text": "Hello! I can certainly help with that."}`) and validate it against the `OUTPUT_SCHEMA`.
 
@@ -79,4 +79,4 @@ PROFILE:
       granularity: "word"
 ```
 
-By making streaming a first-class citizen in the prompt specification, PromptLang allows developers to easily build the fast, interactive experiences that users have come to expect from modern AI applications.
+By making streaming a first-class citizen in the prompt specification, ProML allows developers to easily build the fast, interactive experiences that users have come to expect from modern AI applications.

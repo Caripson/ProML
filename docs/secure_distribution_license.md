@@ -70,7 +70,7 @@ META:
 
 1.  The `kill_switch_id` is a unique identifier for this family of prompts.
 2.  The `kill_switch_authority` is a URL pointing to a trusted server that maintains a list of revoked prompt IDs.
-3.  Before a PromptLang runtime executes this prompt, it **must** first contact the `kill_switch_authority` (respecting caching rules to avoid performance issues).
+3.  Before a ProML runtime executes this prompt, it **must** first contact the `kill_switch_authority` (respecting caching rules to avoid performance issues).
 4.  The runtime asks the authority: "Is `mycorp-fin-analyzer-v3` on the revoked list?"
 5.  If the authority responds with "yes", the runtime **must refuse to execute the prompt** and should return an error indicating that the prompt has been disabled for security reasons.
 

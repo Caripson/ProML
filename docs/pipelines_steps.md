@@ -23,13 +23,13 @@ This pipeline first generates a marketing slogan in English and then translates 
 PROMPT:
 PIPELINE:
   - name: "generate_slogan"
-    prompt: "/prompts/slogan_generator.prompt"
+    prompt: "/prompts/slogan_generator.proml"
     input: {
       product: "{{INPUT.product}}"
     }
 
   - name: "translate_to_french"
-    prompt: "/prompts/translator.prompt"
+    prompt: "/prompts/translator.proml"
     input: {
       text: "{{STEPS.generate_slogan.output.slogan}}",
       target_language: "French"
@@ -57,18 +57,18 @@ This is a more advanced pattern where the AI critiques its own work.
 PROMPT:
 PIPELINE:
   - name: "draft_summary"
-    prompt: "/prompts/basic_summarizer.prompt"
+    prompt: "/prompts/basic_summarizer.proml"
     input: { article: "{{INPUT.article}}" }
 
   - name: "critique_summary"
-    prompt: "/prompts/summary_critic.prompt"
+    prompt: "/prompts/summary_critic.proml"
     input: {
       summary: "{{STEPS.draft_summary.output.summary}}",
       article: "{{INPUT.article}}"
     }
 
   - name: "revise_summary"
-    prompt: "/prompts/summary_reviser.prompt"
+    prompt: "/prompts/summary_reviser.proml"
     input: {
       original_summary: "{{STEPS.draft_summary.output.summary}}",
       critique: "{{STEPS.critique_summary.output.critique}}",

@@ -1,6 +1,6 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
-title = 'PromptLang Specification'
+title = 'ProML (Prompt Markup Language)'
 
 # Author
 [author]

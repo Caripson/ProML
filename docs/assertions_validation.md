@@ -51,7 +51,7 @@ CONSTRAINTS:
 
 **How it Works:**
 
-After the model generates an output, but before it is returned, the PromptLang runtime validates it against these constraints:
+After the model generates an output, but before it is returned, the ProML runtime validates it against these constraints:
 1.  It checks if the `biography` string is longer than 500 characters.
 2.  It verifies that all the strings from the input `achievements` array are present in the generated `biography`.
 3.  It ensures that the biography doesn't contain lazy, clichéd phrases.
@@ -82,7 +82,7 @@ Here, the assertion in the `INPUTS` block ensures that the prompt is never run w
 
 ### Common Assertion Types
 
-PromptLang supports a rich set of assertion types, including:
+ProML supports a rich set of assertion types, including:
 
 *   **Equality:** `equals`, `not_equals`
 *   **Numeric:** `greater_than`, `less_than`, `in_range`
@@ -90,4 +90,4 @@ PromptLang supports a rich set of assertion types, including:
 *   **Array:** `array_length`, `contains_all`, `contains_any`, `is_unique`
 *   **Logical:** `all_of`, `any_of`, `not` (for combining other assertions)
 
-By combining a structural schema with semantic assertions, PromptLang provides a comprehensive framework for ensuring the quality, correctness, and safety of model outputs.
+By combining a structural schema with semantic assertions, ProML provides a comprehensive framework for ensuring the quality, correctness, and safety of model outputs.

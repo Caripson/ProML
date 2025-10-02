@@ -1,6 +1,6 @@
 # 29. Interactive Debugging
 
-**Core Principle:** Writing complex prompts and pipelines can be difficult. Developers need tools to debug them, just like with traditional code. PromptLang should support interactive debugging, including features like breakpoints and step-through execution.
+**Core Principle:** Writing complex prompts and pipelines can be difficult. Developers need tools to debug them, just like with traditional code. ProML should support interactive debugging, including features like breakpoints and step-through execution.
 
 This principle elevates prompt engineering from a "black box" guessing game to a transparent, inspectable process.
 
@@ -13,29 +13,29 @@ This principle elevates prompt engineering from a "black box" guessing game to a
 
 ## Practical Application & Examples
 
-Interactive debugging would be a feature of a **PromptLang IDE** or a specialized development tool. A developer could set breakpoints within a prompt file and then run it in a "debug mode".
+Interactive debugging would be a feature of a **ProML IDE** or a specialized development tool. A developer could set breakpoints within a prompt file and then run it in a "debug mode".
 
 ### Example: Debugging a Pipeline
 
 Imagine a developer is debugging the `Reflect-and-Revise` pipeline from the [Pipelines & Steps](./pipelines_steps.md) documentation. The final output is poor, and they want to see why.
 
-**File: `/prompts/reflect_and_revise.prompt`**
+**File: `/prompts/reflect_and_revise.proml`**
 ```
 PROMPT:
 PIPELINE:
   - name: "draft_summary"
-    prompt: "/prompts/basic_summarizer.prompt"
+    prompt: "/prompts/basic_summarizer.proml"
     input: { article: "{{INPUT.article}}" }
 
   - name: "critique_summary" Breakpoint
-    prompt: "/prompts/summary_critic.prompt"
+    prompt: "/prompts/summary_critic.proml"
     input: {
       summary: "{{STEPS.draft_summary.output.summary}}",
       article: "{{INPUT.article}}"
     }
 
   - name: "revise_summary"
-    prompt: "/prompts/summary_reviser.prompt"
+    prompt: "/prompts/summary_reviser.proml"
     input: {
       original_summary: "{{STEPS.draft_summary.output.summary}}",
       critique: "{{STEPS.critique_summary.output.critique}}",
@@ -75,6 +75,6 @@ PIPELINE:
 6.  **Step Through (or Stop):** From here, the developer could:
     *   **Step Over:** Execute the `critique_summary` step and pause again before `revise_summary` to see what the critique looks like.
     *   **Modify Variables:** They could even manually edit the `draft_summary.output.summary` in the debugger to see how the rest of the pipeline would behave with a better draft.
-    *   **Stop:** Stop the execution and go fix the `basic_summarizer.prompt` to produce more detailed drafts.
+    *   **Stop:** Stop the execution and go fix the `basic_summarizer.proml` to produce more detailed drafts.
 
-By providing a familiar debugging experience, PromptLang would make prompt engineering significantly more productive and accessible to the millions of developers who already rely on these tools for writing traditional code.
+By providing a familiar debugging experience, ProML would make prompt engineering significantly more productive and accessible to the millions of developers who already rely on these tools for writing traditional code.

@@ -1,17 +1,17 @@
-# PromptLang Language Specification (A Proposal)
+# ProML (Prompt Markup Language) (A Proposal)
 
 *Author: Johan Carlsson*
 
-This repository contains a proposal and an exploration into a structured language for interacting with Large Language Models (LLMs), tentatively named PromptLang.
+This repository contains a proposal and an exploration into a structured language for interacting with Large Language Models (LLMs), tentatively named ProML.
 
 ## 🏛️ Vision
 
-The idea behind PromptLang is to explore how concepts from software engineering (like versioning, testing, and modularity) could be applied to the world of prompt engineering. The hope is that this could lead to AI-powered applications that are more reliable, testable, and maintainable.
+The idea behind ProML is to explore how concepts from software engineering (like versioning, testing, and modularity) could be applied to the world of prompt engineering. The hope is that this could lead to AI-powered applications that are more reliable, testable, and maintainable.
 
 This repository contains two main components:
 
-1.  **The Language Specification Wiki:** A complete guide to the principles and syntax of PromptLang.
-2.  **A Proof-of-Concept Test Runner:** A Python script that demonstrates how to parse and test `.prompt` files.
+1.  **The Language Specification Wiki:** A complete guide to the principles and syntax of ProML.
+2.  **A Proof-of-Concept Test Runner:** A Python script that demonstrates how to parse and test `.proml` files.
 
 ---
 
@@ -27,24 +27,24 @@ The wiki details all 29 core principles of the language, from `Declarative First
 
 ## 🧪 Proof-of-Concept Test Runner
 
-We have built a simple test runner, `promptlang_test.py`, to demonstrate the feasibility of the `Testability` principle (#6).
+We have built a simple test runner, `proml_test.py`, to demonstrate the feasibility of the `Testability` principle (#6).
 
 ### How to Run the Tests
 
-You can run the test runner against the example `.prompt` files located in the `/test_prompts` directory.
+You can run the test runner against the example `.proml` files located in the `/test_prompts` directory.
 
 1.  **Run the sentiment analysis test (demonstrates basic assertions):**
     ```bash
-    python3 promptlang_test.py test_prompts/sentiment_analysis.prompt
+    python3 proml_test.py test_prompts/sentiment_analysis.proml
     ```
     *(This test is expected to have 1 failing test case by design.)*
 
 2.  **Run the caching test (demonstrates stateful, multi-step tests):**
     ```bash
-    python3 promptlang_test.py test_prompts/caching_example.prompt
+    python3 proml_test.py test_prompts/caching_example.proml
     ```
 
-This script is a proof-of-concept for parsing the PromptLang DSL, executing tests defined in a `TEST` block, and validating outputs against assertions.
+This script is a proof-of-concept for parsing the ProML DSL, executing tests defined in a `TEST` block, and validating outputs against assertions.
 
 ---
 

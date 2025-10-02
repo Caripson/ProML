@@ -57,7 +57,7 @@ When the user asks, "What's the weather like in London?", the model doesn't answ
 }
 ```
 
-The PromptLang runtime intercepts this request.
+The ProML runtime intercepts this request.
 1.  It **validates** the call against the schema. The `name` is correct, and the `parameters` object has the required `city` property of type `string`. The call is valid.
 2.  It checks the `side_effects` flag. It is `false`, meaning this tool only reads data and doesn't change any state.
 3.  The runtime then executes the actual `get_weather` function in the application code with the parameter `city: "London"`.
@@ -97,4 +97,4 @@ TOOLS:
     *   First, it will `retry` the call up to 2 times.
     *   If it still fails, it will follow the `feedback_to_model` strategy, feeding the error message back to the model so it can generate a helpful response to the user.
 
-By defining tools with these explicit, machine-readable contracts, PromptLang enables the creation of powerful and safe AI agents that can interact with the world beyond simple text generation.
+By defining tools with these explicit, machine-readable contracts, ProML enables the creation of powerful and safe AI agents that can interact with the world beyond simple text generation.

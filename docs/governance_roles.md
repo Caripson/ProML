@@ -1,6 +1,6 @@
 # 19. Governance & Roles
 
-**Core Principle:** Prompts in a production system require clear ownership, review processes, and risk assessment. PromptLang provides a metadata framework for embedding governance information directly into the prompt file.
+**Core Principle:** Prompts in a production system require clear ownership, review processes, and risk assessment. ProML provides a metadata framework for embedding governance information directly into the prompt file.
 
 This makes governance an explicit, auditable part of the prompt lifecycle, rather than an external, ad-hoc process.
 
@@ -88,4 +88,4 @@ POLICIES:
 3.  **Prompt Registry:** A central registry of all prompts could display this governance data, allowing anyone in the organization to see who owns a prompt, how risky it is, and when it was last reviewed.
 4.  **Automated Alerts:** A script could periodically scan all prompts and flag any `high_risk` prompts that haven't been reviewed in the last 6 months, creating a ticket for the `owner` to address.
 
-By embedding governance directly into the prompt file, PromptLang helps organizations manage their AI systems responsibly and at scale.
+By embedding governance directly into the prompt file, ProML helps organizations manage their AI systems responsibly and at scale.
