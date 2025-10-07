@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Dict, Iterable, List, Optional
+from typing import Any, ClassVar, Dict, Iterable, List, Optional
 
 import yaml
 
@@ -129,6 +129,7 @@ class TestAssertion:
     path: Optional[str] = None
     value: Any = None
     options: Dict[str, Any] = field(default_factory=dict)
+    __test__: ClassVar[bool] = False
 
 
 @dataclass
@@ -138,6 +139,7 @@ class TestStep:
     input: Dict[str, Any]
     mock_output: Any
     assertions: List[TestAssertion]
+    __test__: ClassVar[bool] = False
 
 
 @dataclass
@@ -147,6 +149,7 @@ class TestCase:
     input: Dict[str, Any]
     expect: Dict[str, Any]
     steps: List[TestStep]
+    __test__: ClassVar[bool] = False
 
 
 @dataclass
